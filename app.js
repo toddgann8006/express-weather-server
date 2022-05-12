@@ -3,6 +3,7 @@ import express from 'express';
 import bodyParser from "body-parser"
 import fetch from 'node-fetch';
 import 'dotenv/config';
+import cors from 'cors';
 const router = express.Router();
 const app = express();
 
@@ -26,6 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 router.get('/', function (req, res) {
   res.render("index", { weather: null, error: null });
